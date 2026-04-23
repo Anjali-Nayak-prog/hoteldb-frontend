@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
-import { api } from "./services/api";
+import Dashboard from "./components/dashboard";
+import Customers from "./components/customers";
+import Rooms from "./components/rooms";
+import Bookings from "./components/bookings";
+import Settings from "./components/settings";
 import "./styles.css";
 
 function App() {
   const [section, setSection] = useState("dashboard");
-
-  useEffect(() => {
-    api("GET", "/rooms").then(console.log);
-  }, []);
 
   return (
     <>
       <Header />
 
       <div className="main-layout">
-        <Sidebar setSection={setSection} />
+        <Sidebar section={section} setSection={setSection} />
 
         <main>
-          {section === "dashboard" && <h2>Dashboard</h2>}
-          {section === "customers" && <h2>Customers</h2>}
-          {section === "rooms" && <h2>Rooms</h2>}
-          {section === "bookings" && <h2>Bookings</h2>}
-          {section === "settings" && <h2>Settings</h2>}
+          {section === "dashboard" && <Dashboard />}
+          {section === "customers" && <Customers />}
+          {section === "rooms" && <Rooms />}
+          {section === "bookings" && <Bookings />}
+          {section === "settings" && <Settings />}
         </main>
       </div>
     </>

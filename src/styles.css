@@ -254,6 +254,7 @@ td {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+    margin-bottom: 24px;
 }
 
 /* ROOMS */
@@ -280,4 +281,288 @@ td {
     background: var(--card);
     border: 1px solid var(--border);
     padding: 14px 20px;
+}
+
+/* ===== DASHBOARD ===== */
+
+.dashboard {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Stat Cards */
+.stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.stat-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.stat-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+}
+
+.stat-label {
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+/* Table Enhancements */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+}
+
+th {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-bottom: 16px;
+}
+
+tr {
+    transition: background 0.15s;
+}
+
+tbody tr:hover {
+    background: rgba(200, 169, 110, 0.03);
+}
+
+/* Badge */
+.badge {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: capitalize;
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.badge.badge-confirmed {
+    background: rgba(78, 204, 163, 0.1);
+    color: var(--success);
+}
+
+.badge.badge-pending {
+    background: rgba(200, 169, 110, 0.1);
+    color: var(--accent);
+}
+
+.badge.badge-cancelled {
+    background: rgba(255, 92, 92, 0.1);
+    color: var(--danger);
+}
+
+/* Loading State */
+.dashboard-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 300px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+}
+
+.loading-spinner {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error State */
+.dashboard-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 300px;
+    text-align: center;
+}
+
+.error-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--danger);
+}
+
+.error-message {
+    color: var(--muted);
+    font-size: 0.82rem;
+    max-width: 360px;
+}
+
+/* Empty State */
+.empty-state {
+    color: var(--muted);
+    font-size: 0.82rem;
+    text-align: center;
+    padding: 40px 0;
+    letter-spacing: 0.04em;
+}
+
+/* ===== FORMS ===== */
+
+.form-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    min-width: 0;
+    flex: 1;
+}
+
+.input:focus {
+    border-color: var(--accent);
+}
+
+.input::placeholder {
+    color: var(--muted);
+}
+
+select.input {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%236b6b8a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+}
+
+/* ===== ROOM CARDS ===== */
+
+.room-card {
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.room-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.room-number {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.room-type {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+}
+
+.room-price {
+    font-size: 0.82rem;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+/* ===== SETTINGS ===== */
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.settings-item:last-child {
+    border-bottom: none;
+}
+
+.settings-label {
+    font-size: 0.82rem;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.settings-value {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+}
+
+/* ===== OFFLINE BANNER ===== */
+
+.dummy-banner {
+    background: rgba(200, 169, 110, 0.08);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
 }
